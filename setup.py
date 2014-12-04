@@ -9,6 +9,7 @@ setup(name='moreblog',
         'more.transaction',
         'zope.sqlalchemy >= 0.7.4',
         'sqlalchemy >= 0.9',
+        'werkzeug',
         ],
       entry_points={
          'console_scripts': [
