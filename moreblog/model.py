@@ -5,14 +5,30 @@ from sqlalchemy import (
     DateTime,
     ForeignKey,
     )
-from sqlalchemy.orm import relationship
-
+from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
+from zope.sqlalchemy import register
 
 Base = declarative_base()
 
+Session = scoped_session(sessionmaker())
+register(Session)
+
 class Root(object):
     pass
+
+class Collection(object):
+    @classmethod
+    def get_posts(cls):
+        pass
+
+    def add(self, title, content):
+        session = Session()
+        post = Post(title=title, content=content)
+        session.add(post)
+        session.flush()
+        return post
+
 
 
 class Post(Base):
