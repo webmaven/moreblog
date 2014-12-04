@@ -52,3 +52,6 @@ docs/_build/
 
 # PyBuilder
 target/
+
+# Database
+morepath_sqlalchemy.db
