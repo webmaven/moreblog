@@ -1,5 +1,6 @@
 import morepath
-from morepath.security import BasicAuthIdentityPolicy
+from more.static import StaticApp
+from morepath import redirect
 import sqlalchemy
 from more.transaction import transaction_app
 from sqlalchemy.orm import scoped_session, sessionmaker
@@ -11,22 +12,9 @@ from . import model
 Session = scoped_session(sessionmaker())
 register(Session)
 
-class App(morepath.App):
+class App(StaticApp):
     pass
 
-@App.identity_policy()
-def get_identity_policy():
-    return BasicAuthIdentityPolicy()
-
-@App.verify_identity()
-def verify_identity(identity):
-    return user_has_password(identity.username, identity.password)
-
-def user_has_password(name, pw):
-    if model.users[name].password == pw:
-        return True
-    else:
-        return False
 
 def main():
     engine = sqlalchemy.create_engine('sqlite:///morepath_sqlalchemy.db')

@@ -20,7 +20,15 @@ class Root(object):
 class Collection(object):
     @classmethod
     def get_posts(cls):
-        pass
+        session = Session()
+        all_posts = []
+        for post in session.query(Post):
+            all_posts.append(
+                {"id": post.id,
+                 "title": post.title,
+                 "content": post.content})
+        return all_posts
+
 
     def add(self, title, content):
         session = Session()
@@ -29,15 +37,12 @@ class Collection(object):
         session.flush()
         return post
 
-
-
 class Post(Base):
     __tablename__ = 'post'
 
     id = Column(Integer, primary_key=True)
     title = Column(Text)
     content = Column(Text)
-
 
 
 class User(object):
