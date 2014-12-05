@@ -22,7 +22,7 @@ class Collection(object):
     def get_posts(cls):
         session = Session()
         all_posts = []
-        for post in session.query(Post):
+        for post in session.query(Post).order_by(Post.id.desc()):
             all_posts.append(
                 {"id": post.id,
                  "title": post.title,

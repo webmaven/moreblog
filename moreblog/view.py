@@ -27,13 +27,16 @@ content: <input type="text" name="content"><br>
 posts = $.getJSON('/posts', function( data ) {
   var items = [];
   $.each( data.posts, function(key, val ) {
-    items.push( "<li id='" + val.id + "'>" + val.title + "</li>" );
+    items.push( "<div class='post' id='" + val.id + "'>"\
+    + "<h2>" + val.title + "</h2>" \
+    + "<p>" + val.content + "</p>" \
+    + "</div>" );
   });
 
-  $( "<ul/>", {
-    "class": "my-new-list",
+  $( "<div/>", {
+    "class": "posts",
     html: items.join( "" )
-  }).appendTo( "body" );
+  }).appendTo( "#content" );
 });</script>
 
 </body>

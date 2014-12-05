@@ -1,5 +1,4 @@
 import morepath
-from more.static import StaticApp
 from morepath import redirect
 import sqlalchemy
 from more.transaction import transaction_app
@@ -12,7 +11,7 @@ from . import model
 Session = scoped_session(sessionmaker())
 register(Session)
 
-class App(StaticApp):
+class App(morepath.App):
     pass
 
 
