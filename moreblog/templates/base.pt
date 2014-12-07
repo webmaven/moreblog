@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Moreblog</title>
+ <script src="https://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
+</head>
+<body>
+<h1>MoreBlog</h1>
+<div id="content">
+</div>
+<div id="footer">
+<form action="/posts" method="POST">
+title: <input type="text" name="title"><br>
+content: <input type="text" name="content"><br>
+<input type="submit" value="Add!"><br>
+</form>
+</div>
+
+<script type="text/javascript">
+posts = $.getJSON('/posts', function( data ) {
+  var items = [];
+  $.each( data.posts, function(key, val ) {
+    items.push( "<div class='post' id='" + val.id + "'>" 
+    + "<h2>" + val.title + "</h2>" 
+    + "<p>" + val.content + "</p>" 
+    + "</div>" );
+  });
+
+  $( "<div/>", {
+    "class": "posts",
+    html: items.join( "" )
+  }).appendTo( "#content" );
+});</script>
+
+</body>
+</html>

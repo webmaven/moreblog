@@ -5,6 +5,7 @@ setup(name='moreblog',
       install_requires=[
         'setuptools',
         'morepath',
+        'chameleon',
         'transaction',
         'more.transaction',
         'zope.sqlalchemy >= 0.7.4',
