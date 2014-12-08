@@ -14,7 +14,7 @@ from . import model
 Session = scoped_session(sessionmaker())
 register(Session)
 
-class ChameleonApp(morepath.App):
+class ChameleonApp(transaction_app):
 
     @morepath.reify
     def chameleon_template_paths(self):
