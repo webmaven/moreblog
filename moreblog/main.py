@@ -10,7 +10,6 @@ from more.static import StaticApp
 import sqlalchemy
 from sqlalchemy.orm import scoped_session, sessionmaker
 from zope.sqlalchemy import register
-
 from werkzeug.serving import run_simple
 
 from . import model
@@ -18,7 +17,7 @@ from . import model
 Session = scoped_session(sessionmaker())
 register(Session)
 
-class ChameleonApp(StaticApp):
+class ChameleonApp(StaticApp, transaction_app):
 
     @morepath.reify
     def chameleon_template_paths(self):
