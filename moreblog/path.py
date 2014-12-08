@@ -9,7 +9,8 @@ def get_root():
           converters={'id': int})
 def get_post(id):
     session = Session()
-    return session.query(Post).filter(Post.id == id).first()
+    post = session.query(Post).filter(Post.id == id).first()
+    return post
 
 @App.path(model=Collection, path='posts')
 def get_posts():
