@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
- <title>Moreblog</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Moreblog</title>
 </head>
 <body>
+<div class="container">
 <h1>MoreBlog</h1>
 <div id="content">
 </div>
@@ -14,7 +18,7 @@ content: <input type="text" name="content"><br>
 <input type="submit" value="Add!"><br>
 </form>
 </div>
-
+</div><!-- /.container -->
 <script type="text/javascript">
 posts = $.getJSON('/posts', function( data ) {
   var items = [];
